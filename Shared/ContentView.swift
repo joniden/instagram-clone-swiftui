@@ -40,7 +40,10 @@ struct ContentView: View {
 				ScrollView {
 					LazyVStack(spacing: 50) {
 						ForEach(viewModel.posts) { post in
-							PostViewRow(post)
+							VStack {
+								PostViewRow(post)
+								NavigationLink("Comment", destination: PostView(post))
+							}
 						}
 					}
 				}
