@@ -9,11 +9,11 @@ import SwiftUI
 import UIKit
 import KingfisherSwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
 	
 	var colors: [Color] = [.blue, .green, .yellow, .black, .orange, .red, .pink, .gray, .purple].shuffled()
 	
-	@ObservedObject var viewModel = ContentViewModel()
+	@ObservedObject var viewModel = HomeViewModel()
 	
 	init(fetch: Bool = true) {
 		if fetch {
@@ -43,15 +43,15 @@ struct ContentView: View {
 					LazyVStack(spacing: 50) {
 						ForEach(viewModel.posts) { post in
 							VStack {
-								PostViewRow(post)
-								NavigationLink("Comment", destination: PostView(post))
+                                PostRowView(post, post.isLiked)
 							}
 						}
 					}
 				}
 				Spacer()
 				
-			}.navigationBarTitle("Jockes gram", displayMode: .inline)
+            }.navigationBarItems(leading: Text("Foo"), trailing: Text("Bar"))
+            .navigationBarTitle("Fakeagram", displayMode: .inline)
 			
 		}.navigationViewStyle(StackNavigationViewStyle())
     }
@@ -59,6 +59,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }

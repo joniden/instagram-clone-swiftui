@@ -1,5 +1,5 @@
 //
-//  PostView.swift
+//  PostDetailView.swift
 //  Multiplatform
 //
 //  Created by Joacim Nidén on 2020-12-14.
@@ -8,13 +8,13 @@
 import SwiftUI
 import KingfisherSwiftUI
 
-struct PostView: View {
+struct PostDetailView: View {
 	
 	private let post: Post
+    @State var isLiked = false
+	@ObservedObject var viewModel = PostDetailViewModel()
 	
-	@ObservedObject var viewModel = PostViewModel()
-	
-	init(_ post: Post) {
+    init(_ post: Post) {
 		self.post = post
 		viewModel.getComments()
 	}
@@ -23,7 +23,7 @@ struct PostView: View {
 		
 		ScrollView {
 			LazyVStack {
-				PostViewRow(post)
+				PostRowView(post,isLiked)
 				LazyVStack(alignment: .leading, spacing: 10) {
 					ForEach(viewModel.comments, id: \.self) { comment in
 						HStack {
@@ -48,12 +48,12 @@ struct PostView: View {
     }
 }
 
-struct PostView_Previews: PreviewProvider {
+struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
 		
 		let url = URL(string: "https://placekitten.com/200/454")
-		let post = Post(id: "", username: "Alexander", image: .remote(url: url))
+        let post = Post(id: "", username: "Alexander", image: .remote(url: url), description: NSAttributedString(string: "The finest of all cats!"), isLiked: true)
 		
-		PostView(post)
+        PostDetailView(post)
     }
 }

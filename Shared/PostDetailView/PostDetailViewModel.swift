@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class PostViewModel: ObservableObject {
+class PostDetailViewModel: ObservableObject {
 	
 	@Published var comments: [Comment] = []
 	

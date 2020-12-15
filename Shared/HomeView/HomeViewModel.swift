@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ContentViewModel: ObservableObject {
+class HomeViewModel: ObservableObject {
 	
 	@Published var posts: [Post] = []
 	
@@ -18,7 +18,7 @@ class ContentViewModel: ObservableObject {
 					"https://placekitten.com/200/302"]
 		
 		posts = urls.map { url in
-			return Post(id: UUID().uuidString, username: "Jocke", image: .remote(url: URL(string: url)))
+            return Post(id: UUID().uuidString, username: "Jocke", image: .remote(url: URL(string: url)), description: NSAttributedString(string: "This is a perfect cat"), isLiked: true)
 		}
 
 		

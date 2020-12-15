@@ -12,9 +12,11 @@ struct Post: Hashable, Identifiable {
 		return lhs.id == rhs.id
 	}
 	
-	var id: String
-	var username: String
-	var image: ImageLocation
+	let id: String
+	let username: String
+	let image: ImageLocation
+    let description: NSAttributedString
+    var isLiked: Bool = false
 }
 
 enum ImageLocation: Hashable {
