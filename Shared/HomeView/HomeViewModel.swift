@@ -12,16 +12,22 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var posts: [Post] = []
 	
+	let service = APIService()
+	
 	func fetch() {
-		let urls = ["https://placekitten.com/200/300",
-					"https://placekitten.com/200/301",
-					"https://placekitten.com/200/302"]
-		
-		posts = urls.map { url in
-            return Post(id: UUID().uuidString, username: "Jocke", image: .remote(url: URL(string: url)), description: NSAttributedString(string: "This is a perfect cat"), isLiked: true)
+		service.getPosts().map { p in
+			p.map { Post(dataPost: $0) }
 		}
-
+		.receive(on: DispatchQueue.main)
+		.eraseToAnyPublisher()
+		.assign(to: &$posts)
+	}
+	
+	func setPost(_ post: Post) {
+		guard let pos = posts.firstIndex(of: post) else {
+			return
+		}
 		
-		
+		posts[pos] = post
 	}
 }

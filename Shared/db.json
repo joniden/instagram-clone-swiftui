@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "username": "Jocke",
+      "image": "https://placekitten.com/200/300",
+      "description": "This is a perfect cat",
+      "isLiked": true
+    },
+    {
+      "id": "2",
+      "username": "Jocke",
+      "image": "https://placekitten.com/200/301",
+      "description": "This is a perfect cat",
+      "isLiked": false
+    },
+    {
+      "id": "3",
+      "username": "Jocke",
+      "image": "https://placekitten.com/200/302",
+      "description": "This is a perfect cat",
+      "isLiked": false
+    },
+    {
+      "id": "4",
+      "username": "Jocke",
+      "image": "https://placekitten.com/200/303",
+      "description": "This is a perfect cat",
+      "isLiked": false
+    },
+    {
+      "id": "5",
+      "username": "Jocke",
+      "image": "https://placekitten.com/200/304",
+      "description": "This is a perfect cat",
+      "isLiked": false
+    },
+    {
+      "id": "6",
+      "username": "Jocke",
+      "image": "https://placekitten.com/200/305",
+      "description": "This is a perfect cat",
+      "isLiked": false
+    }
+  ]
+}

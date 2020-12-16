@@ -41,10 +41,11 @@ struct HomeView: View {
 				
 				ScrollView {
 					LazyVStack(spacing: 50) {
-						ForEach(viewModel.posts) { post in
-							VStack {
-                                PostRowView(post, post.isLiked)
+						ForEach(viewModel.posts) { post in							
+							PostRowView(post) { post in
+								viewModel.setPost(post)
 							}
+							
 						}
 					}
 				}

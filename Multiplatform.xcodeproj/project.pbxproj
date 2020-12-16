@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510A4BAF2589F78300BCA4FB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510A4BAE2589F78300BCA4FB /* APIService.swift */; };
+		510A4BB3258A010D00BCA4FB /* DataPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510A4BB2258A010D00BCA4FB /* DataPost.swift */; };
 		5134BDA0258759A400C8BE29 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134BD9F258759A300C8BE29 /* HomeViewModel.swift */; };
 		5134BDA1258759A400C8BE29 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134BD9F258759A300C8BE29 /* HomeViewModel.swift */; };
 		5134BDA5258759E700C8BE29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134BDA4258759E700C8BE29 /* Post.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		510A4BAE2589F78300BCA4FB /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		510A4BB2258A010D00BCA4FB /* DataPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataPost.swift; path = ../../../../../DataPost.swift; sourceTree = "<group>"; };
 		5134BD9F258759A300C8BE29 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5134BDA4258759E700C8BE29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5134BDD125876D8600C8BE29 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
@@ -73,11 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510A4BAD2589F77300BCA4FB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				510A4BAE2589F78300BCA4FB /* APIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5142A8912588C11100450112 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				5134BDA4258759E700C8BE29 /* Post.swift */,
 				5142A8942588C12A00450112 /* Comment.swift */,
+				510A4BB2258A010D00BCA4FB /* DataPost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 		51D1B0E42587555100F0FC76 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				510A4BAD2589F77300BCA4FB /* Services */,
 				5142A8992588C40500450112 /* PostDetailView */,
 				8A2439272588F3D4005DBC75 /* HomeView */,
 				8A2439162588F1DF005DBC75 /* CommonViews */,
@@ -275,12 +289,14 @@
 				5139564A2588C7CD003A706A /* Date+Extensions.swift in Sources */,
 				5134BDE125879FB400C8BE29 /* ImageView.swift in Sources */,
 				51D1B0FA2587555300F0FC76 /* HomeView.swift in Sources */,
+				510A4BB3258A010D00BCA4FB /* DataPost.swift in Sources */,
 				5134BDD725876DEC00C8BE29 /* PostRowView.swift in Sources */,
 				5134BDDC2587910600C8BE29 /* Icon.swift in Sources */,
 				51D1B0F82587555300F0FC76 /* MultiplatformApp.swift in Sources */,
 				5134BDA0258759A400C8BE29 /* HomeViewModel.swift in Sources */,
 				5134BDD225876D8600C8BE29 /* PostDetailView.swift in Sources */,
 				5142A8952588C12A00450112 /* Comment.swift in Sources */,
+				510A4BAF2589F78300BCA4FB /* APIService.swift in Sources */,
 				5134BDA5258759E700C8BE29 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,8 +438,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LBV7BKB3S9;
+				DEVELOPMENT_TEAM = 5958574TWN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -431,8 +448,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.herlin.Multiplatform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joacim.Multiplatform;
 				PRODUCT_NAME = Multiplatform;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -445,7 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LBV7BKB3S9;
+				DEVELOPMENT_TEAM = 5958574TWN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -453,7 +471,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.herlin.Multiplatform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joacim.Multiplatform;
 				PRODUCT_NAME = Multiplatform;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

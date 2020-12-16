@@ -8,22 +8,23 @@
 import SwiftUI
 import KingfisherSwiftUI
 
-struct PostDetailView: View {
+struct PostDetailView<PostRowView: View>: View {
 	
-	private let post: Post
     @State var isLiked = false
 	@ObservedObject var viewModel = PostDetailViewModel()
 	
-    init(_ post: Post) {
-		self.post = post
+	let postRow: PostRowView
+		
+	init(@ViewBuilder postRow: () -> PostRowView) {
+		self.postRow = postRow()
 		viewModel.getComments()
 	}
-	
+
     var body: some View {
 		
 		ScrollView {
 			LazyVStack {
-				PostRowView(post,isLiked)
+				postRow
 				LazyVStack(alignment: .leading, spacing: 10) {
 					ForEach(viewModel.comments, id: \.self) { comment in
 						HStack {
@@ -54,6 +55,6 @@ struct PostDetailView_Previews: PreviewProvider {
 		let url = URL(string: "https://placekitten.com/200/454")
         let post = Post(id: "", username: "Alexander", image: .remote(url: url), description: NSAttributedString(string: "The finest of all cats!"), isLiked: true)
 		
-        PostDetailView(post)
+		PostDetailView(postRow: { PostRowView(post, updateCallback: {_ in })})
     }
 }

@@ -10,17 +10,18 @@ import KingfisherSwiftUI
 
 struct PostRowView: View {
 		
-	let post: Post
+	var post: Post
 	
 	@State var likes: Int = 0
-    @Binding var isLiked: Bool
+	@State var isLiked: Bool = false
 	@State var animate = false
 	@State var size: CGFloat = 1
 	@State var opacity: Double = 0
+	let updateCallback: (Post) -> Void
 	
-    init(_ post: Post, _ isLiked: Bool) {
+	init(_ post: Post, updateCallback: @escaping (Post) -> Void) {
 		self.post = post
-        self.isLiked = isLiked
+		self.updateCallback = updateCallback		
 	}
 	
     var body: some View {
@@ -65,17 +66,17 @@ struct PostRowView: View {
                             
                         }
                     
-                    Image(systemName: Icon.bubble.rawValue)
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    
+					NavigationLink(destination: PostDetailView(postRow: {self})) {
+						Image(systemName: Icon.bubble.rawValue)
+							.resizable()
+							.frame(width: 20, height: 20)
+					}
                     
                     Image(systemName: Icon.paperplane.rawValue)
                         .resizable()
                         .frame(width: 20, height: 20)
                         .onTapGesture {
             
-                        
                         }
                 }
                 
@@ -97,13 +98,18 @@ struct PostRowView: View {
 				
 		}
     }
-	
+
     func handleLike() {
         likes = isLiked ? 1 : 0
+		
+		var newPost = post
+		newPost.isLiked = isLiked
 		
 		guard isLiked else {
 			return
 		}
+
+		updateCallback(newPost)
 		
 		size = 3
 		opacity = 1
@@ -123,6 +129,6 @@ struct PostRowView_Previews: PreviewProvider {
 		//let url = URL(string: "https://placekitten.com/200/454")
         let post = Post(id: "", username: "Alexander", image: .local(name: "cat"), description: NSAttributedString(string: "The finest cat of them all! Don't you think?! ¡!?¿"),isLiked: false)
 		
-        PostRowView(post, true)
+		PostRowView(post, updateCallback: {_ in })
     }
 }
