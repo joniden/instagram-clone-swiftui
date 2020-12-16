@@ -17,9 +17,10 @@ struct PostRowView: View {
 	@State var animate = false
 	@State var size: CGFloat = 1
 	@State var opacity: Double = 0
-	let updateCallback: (Post) -> Void
-	
-	init(_ post: Post, updateCallback: @escaping (Post) -> Void) {
+    @State var showCommentBtn = true
+    
+    let updateCallback: (Post) -> Void
+    init(_ post: Post, updateCallback: @escaping (Post) -> Void) {
 		self.post = post
 		self.updateCallback = updateCallback		
 	}
@@ -27,8 +28,21 @@ struct PostRowView: View {
     var body: some View {
 
 		VStack(alignment: .leading) {
-			Text(post.username).padding(.leading)
-			
+            HStack {
+                Text(post.username).padding(.leading, 20)
+                
+                Spacer()
+                
+                Image(systemName: Icon.bookmark.rawValue)
+                    .resizable()
+                    .frame(width: 30, height: 36)
+                    .padding(4)
+                    .padding(.trailing)
+                    .onTapGesture {
+                        
+                    }
+            }
+            
 			ZStack {
 				
 				ImageView(location: post.image)
@@ -59,41 +73,46 @@ struct PostRowView: View {
                     
                     Image(systemName: Icon.heart.fill(isLiked))
                         .resizable()
-                        .frame(width: 22, height: 20)
+                        .frame(width: 36, height: 36)
+                        .padding(4)
                         .onTapGesture {
                             isLiked.toggle()
                             handleLike()
                             
                         }
                     
-					NavigationLink(destination: PostDetailView(postRow: {self})) {
-						Image(systemName: Icon.bubble.rawValue)
-							.resizable()
-							.frame(width: 20, height: 20)
-					}
-                    
-                    Image(systemName: Icon.paperplane.rawValue)
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .onTapGesture {
-            
+                    NavigationLink(destination: PostDetailView(postRow: {self}, commentBtnVisibility: {v in self.showCommentBtn = v})) {
+                        if showCommentBtn {
+                            Image(systemName: Icon.bubble.rawValue)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .padding(4)
                         }
-                }
+                    }
+                    .foregroundColor(Color(.systemFill))
+               
+                    
+       
+                }.padding(.top, 4)
                 
                 Spacer()
                 
-                Image(systemName: Icon.bookmark.rawValue)
+                Image(systemName: Icon.paperplane.rawValue)
                     .resizable()
-                    .frame(width: 16, height: 20)
+                    .frame(width: 36, height: 36)
+                    .padding(4)
+                    .padding(.trailing)
                     .onTapGesture {
-                        
-                    }.padding(.trailing)
+        
+                    }
+                
+
             
             }.padding(.leading)
             
-            Text("\(likes) likes").bold().padding(.leading)
+            Text("\(likes) likes").bold().padding(.leading, 20)
             
-            Text(post.description.string).padding(.leading)
+            Text(post.description.string).padding(.leading, 20)
             
 				
 		}

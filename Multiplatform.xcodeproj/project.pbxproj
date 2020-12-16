@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		510A4BAF2589F78300BCA4FB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510A4BAE2589F78300BCA4FB /* APIService.swift */; };
-		510A4BB3258A010D00BCA4FB /* DataPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510A4BB2258A010D00BCA4FB /* DataPost.swift */; };
 		5134BDA0258759A400C8BE29 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134BD9F258759A300C8BE29 /* HomeViewModel.swift */; };
 		5134BDA1258759A400C8BE29 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134BD9F258759A300C8BE29 /* HomeViewModel.swift */; };
 		5134BDA5258759E700C8BE29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134BDA4258759E700C8BE29 /* Post.swift */; };
@@ -34,11 +33,12 @@
 		51D1B0FB2587555300F0FC76 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1B0E62587555100F0FC76 /* HomeView.swift */; };
 		51D1B0FC2587555300F0FC76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D1B0E72587555300F0FC76 /* Assets.xcassets */; };
 		51D1B0FD2587555300F0FC76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D1B0E72587555300F0FC76 /* Assets.xcassets */; };
+		8AB8B388258A30C400D89F15 /* DataPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8B387258A30C400D89F15 /* DataPost.swift */; };
+		8AB8B389258A30C400D89F15 /* DataPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8B387258A30C400D89F15 /* DataPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		510A4BAE2589F78300BCA4FB /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		510A4BB2258A010D00BCA4FB /* DataPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataPost.swift; path = ../../../../../DataPost.swift; sourceTree = "<group>"; };
 		5134BD9F258759A300C8BE29 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5134BDA4258759E700C8BE29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5134BDD125876D8600C8BE29 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
@@ -56,6 +56,7 @@
 		51D1B0F42587555300F0FC76 /* Multiplatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Multiplatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D1B0F62587555300F0FC76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51D1B0F72587555300F0FC76 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		8AB8B387258A30C400D89F15 /* DataPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +91,7 @@
 			children = (
 				5134BDA4258759E700C8BE29 /* Post.swift */,
 				5142A8942588C12A00450112 /* Comment.swift */,
-				510A4BB2258A010D00BCA4FB /* DataPost.swift */,
+				8AB8B387258A30C400D89F15 /* DataPost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,7 +290,7 @@
 				5139564A2588C7CD003A706A /* Date+Extensions.swift in Sources */,
 				5134BDE125879FB400C8BE29 /* ImageView.swift in Sources */,
 				51D1B0FA2587555300F0FC76 /* HomeView.swift in Sources */,
-				510A4BB3258A010D00BCA4FB /* DataPost.swift in Sources */,
+				8AB8B388258A30C400D89F15 /* DataPost.swift in Sources */,
 				5134BDD725876DEC00C8BE29 /* PostRowView.swift in Sources */,
 				5134BDDC2587910600C8BE29 /* Icon.swift in Sources */,
 				51D1B0F82587555300F0FC76 /* MultiplatformApp.swift in Sources */,
@@ -310,6 +311,7 @@
 				5134BDE225879FB400C8BE29 /* ImageView.swift in Sources */,
 				51D1B0FB2587555300F0FC76 /* HomeView.swift in Sources */,
 				5134BDD825876DEC00C8BE29 /* PostRowView.swift in Sources */,
+				8AB8B389258A30C400D89F15 /* DataPost.swift in Sources */,
 				5134BDDD2587910600C8BE29 /* Icon.swift in Sources */,
 				51D1B0F92587555300F0FC76 /* MultiplatformApp.swift in Sources */,
 				5134BDA1258759A400C8BE29 /* HomeViewModel.swift in Sources */,
@@ -440,7 +442,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5958574TWN;
+				DEVELOPMENT_TEAM = LBV7BKB3S9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -448,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.joacim.Multiplatform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.herlin.Multiplatform;
 				PRODUCT_NAME = Multiplatform;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -463,7 +465,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5958574TWN;
+				DEVELOPMENT_TEAM = LBV7BKB3S9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -471,7 +473,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.joacim.Multiplatform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.herlin.Multiplatform;
 				PRODUCT_NAME = Multiplatform;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

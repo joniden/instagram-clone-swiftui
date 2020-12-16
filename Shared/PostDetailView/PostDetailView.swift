@@ -14,17 +14,24 @@ struct PostDetailView<PostRowView: View>: View {
 	@ObservedObject var viewModel = PostDetailViewModel()
 	
 	let postRow: PostRowView
-		
-	init(@ViewBuilder postRow: () -> PostRowView) {
-		self.postRow = postRow()
-		viewModel.getComments()
-	}
+    let commentBtnVisibility: (Bool) -> Void
+    
+    init(@ViewBuilder postRow: () -> PostRowView, commentBtnVisibility: @escaping (_ visible: Bool) -> Void) {
+        self.postRow = postRow()
+        self.commentBtnVisibility = commentBtnVisibility;
+        viewModel.getComments()
+    }
 
     var body: some View {
-		
-		ScrollView {
-			LazyVStack {
-				postRow
+        
+        ScrollView {
+            LazyVStack {
+                postRow.onDisappear{
+                    self.commentBtnVisibility(true)
+                }
+                .onAppear {
+                    self.commentBtnVisibility(false)
+                }
 				LazyVStack(alignment: .leading, spacing: 10) {
 					ForEach(viewModel.comments, id: \.self) { comment in
 						HStack {
@@ -55,6 +62,6 @@ struct PostDetailView_Previews: PreviewProvider {
 		let url = URL(string: "https://placekitten.com/200/454")
         let post = Post(id: "", username: "Alexander", image: .remote(url: url), description: NSAttributedString(string: "The finest of all cats!"), isLiked: true)
 		
-		PostDetailView(postRow: { PostRowView(post, updateCallback: {_ in })})
+        PostDetailView(postRow: { PostRowView(post, updateCallback: {_ in })}, commentBtnVisibility : {_ in })
     }
 }
