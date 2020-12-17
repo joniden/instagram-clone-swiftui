@@ -18,11 +18,12 @@ struct PostRowView: View {
 	@State var size: CGFloat = 1
 	@State var opacity: Double = 0
     @State var showCommentBtn = true
-    
-    let updateCallback: (Post) -> Void
-    init(_ post: Post, updateCallback: @escaping (Post) -> Void) {
+
+	var actionLike: ((Post) -> Void)?
+	var actionTapCommentBtn: ((Post) -> Void)?
+	
+	init(_ post: Post) {
 		self.post = post
-		self.updateCallback = updateCallback		
 	}
 	
     var body: some View {
@@ -39,14 +40,14 @@ struct PostRowView: View {
                     .padding(4)
                     .padding(.trailing)
                     .onTapGesture {
-                        
+                        actionTapCommentBtn?(post)
                     }
             }
             
 			ZStack {
 				
 				ImageView(location: post.image)
-					.frame(maxHeight: 500)
+					.frame(maxHeight: post.focus ? 500 : 300)
 					.clipped()
 					.onTapGesture(count: 2) {
 						isLiked = true
@@ -81,18 +82,18 @@ struct PostRowView: View {
                             
                         }
                     
-                    NavigationLink(destination: PostDetailView(postRow: {self}, commentBtnVisibility: {v in self.showCommentBtn = v})) {
-                        if showCommentBtn {
-                            Image(systemName: Icon.bubble.rawValue)
-                                .resizable()
-                                .frame(width: 36, height: 36)
-                                .padding(4)
-                        }
-                    }
-                    .foregroundColor(Color(.systemFill))
-               
-                    
-       
+						Image(systemName: Icon.bubble.rawValue)
+							.resizable()
+							.frame(width: 36, height: 36)
+							.padding(4)
+							.opacity(showCommentBtn ? 1 : 0)
+							.onTapGesture {
+								withAnimation {
+									showCommentBtn.toggle()
+								}
+								actionTapCommentBtn?(post)
+							}
+
                 }.padding(.top, 4)
                 
                 Spacer()
@@ -105,20 +106,16 @@ struct PostRowView: View {
                     .onTapGesture {
         
                     }
-                
-
-            
+   
             }.padding(.leading)
             
             Text("\(likes) likes").bold().padding(.leading, 20)
             
             Text(post.description.string).padding(.leading, 20)
-            
-				
 		}
     }
 
-    func handleLike() {
+    private func handleLike() {
         likes = isLiked ? 1 : 0
 		
 		var newPost = post
@@ -128,7 +125,7 @@ struct PostRowView: View {
 			return
 		}
 
-		updateCallback(newPost)
+		actionLike?(newPost)
 		
 		size = 3
 		opacity = 1
@@ -142,12 +139,26 @@ struct PostRowView: View {
 	}
 }
 
+extension PostRowView {
+	func onLike(perform action: @escaping (Post) -> Void ) -> Self {
+		var copy = self
+		copy.actionLike = action
+		return copy
+	}
+	
+	func onTapCommentBtn(perform action: @escaping (Post) -> Void ) -> Self {
+		var copy = self
+		copy.actionTapCommentBtn = action
+		return copy
+	}
+}
+
 struct PostRowView_Previews: PreviewProvider {
     static var previews: some View {
 		
 		//let url = URL(string: "https://placekitten.com/200/454")
         let post = Post(id: "", username: "Alexander", image: .local(name: "cat"), description: NSAttributedString(string: "The finest cat of them all! Don't you think?! ¡!?¿"),isLiked: false)
 		
-		PostRowView(post, updateCallback: {_ in })
+		PostRowView(post)
     }
 }

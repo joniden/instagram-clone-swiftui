@@ -10,7 +10,7 @@ import Combine
 
 class APIService {
 	
-	let baseUrl = "http://192.168.42.17:3001/posts"
+	let baseUrl = "http://192.168.1.108:3001/posts"
 	
 	private func publisher<T: Codable>() -> AnyPublisher<T, Never> {
 		guard let url = URL(string: baseUrl) else {

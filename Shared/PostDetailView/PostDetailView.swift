@@ -62,6 +62,6 @@ struct PostDetailView_Previews: PreviewProvider {
 		let url = URL(string: "https://placekitten.com/200/454")
         let post = Post(id: "", username: "Alexander", image: .remote(url: url), description: NSAttributedString(string: "The finest of all cats!"), isLiked: true)
 		
-        PostDetailView(postRow: { PostRowView(post, updateCallback: {_ in })}, commentBtnVisibility : {_ in })
+		PostDetailView(postRow: { PostRowView(post) }, commentBtnVisibility: {_ in})
     }
 }

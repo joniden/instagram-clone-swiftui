@@ -16,6 +16,7 @@ struct Post: Hashable, Identifiable {
 	let username: String
 	let image: ImageLocation
     let description: NSAttributedString
+	var focus = false
     var isLiked = false
 	var likes: Int = 0
 	var bookmarked = false
